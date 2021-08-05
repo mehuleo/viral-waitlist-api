@@ -59,7 +59,7 @@ const sendWelcomeEmail = async (user: User) => {
             intro: [
                 'Hang tight and we will let you in soon.',
                 'Want access faster? Get others to sign up using your referral code and we will bump you up the list.',
-                `Referral Link: ${_SITE_URL}/?r=${user.id}`,
+                `Referral Link: ${process.env.REFERRAL_LINK_URL}/?r=${user.id}`,
             ],
             outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.',
         },
