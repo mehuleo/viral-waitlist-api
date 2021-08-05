@@ -16,16 +16,30 @@ import ApolloContext from './types/apolloContext';
 
 [
     'NODE_ENV',
+    //
     'MYSQL_HOST',
     'MYSQL_PORT',
     'MYSQL_USER_NAME',
     'MYSQL_PASSWORD',
     'MYSQL_DB_NAME',
+    //
     'SENDGRID_API_KEY',
     'SITE_URL',
     'PORT',
     'SENTRY_DSN',
+    //
     'REFERRAL_BUMP',
+    //
+    'PRODUCT_NAME',
+    'PRODUCT_URL',
+    //
+    'SMTP_PROVIDER',
+    'SMTP_HOST',
+    'SMTP_PORT',
+    'SMTP_USER_SECURE',
+    'SMTP_USER_DISPLAY',
+    'SMTP_USER_EMAIL',
+    'SMTP_USER_PASSWORD',
 ].map((k) => { if (!process.env[k]) throw new Error(`Missing required ENV: ${k}`); }); // eslint-disable-line array-callback-return
 
 Sentry.init({

@@ -8,5 +8,5 @@ import ProcessReferralsService from '../services/ProcessReferralsService';
 export default async () => {
   container.register<Repository<User>>('UserRepository', { useValue: getRepository(User) });
   container.register<RateLimiterMemory>('RateLimiterAlpha', { useValue: new RateLimiterMemory({ points: 1, duration: 1 }) });
-  nodeSchedule.scheduleJob('*/1 * * * *', () => container.resolve(ProcessReferralsService).run());
+  nodeSchedule.scheduleJob('*/60 * * * *', () => container.resolve(ProcessReferralsService).run());
 };
