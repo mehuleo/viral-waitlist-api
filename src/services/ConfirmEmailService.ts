@@ -62,8 +62,8 @@ export default class ConfirmEmailService {
 
     console.log('> emailConfirmation', { isConfirmed, emailString });
     if (isConfirmed) {
-      return res.redirect((successUrlString || 'https://Example.com?emailConfirmation=success').toString());
+      return res.redirect((successUrlString || String(process.env.EMAIL_VERIFICATION_SUCCESS)).toString());
     }
-    return res.redirect((failUrlString || 'https://Example.com?emailConfirmation=failure').toString());
+    return res.redirect((failUrlString || String(process.env.EMAIL_VERIFICATION_FAIL)).toString());
   }
 }
