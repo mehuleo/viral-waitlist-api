@@ -9,17 +9,17 @@ export default class CreateBase1613083697000 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise < any > {
         if (process.env.MYSQL_V_OLDER_THAN_8 === 'true') {
-            await queryRunner.query(`
-                DELIMITER //
-                    CREATE TRIGGER user_before_insert 
-                    BEFORE INSERT ON user FOR EACH ROW 
-                    BEGIN
-                        IF new.id IS NULL THEN
-                            SET new.id = uuid();
-                        END IF;
-                    END;//
-                DELIMITER ;
-            `);
+            // await queryRunner.query(`
+            //     DELIMITER //
+            //         CREATE TRIGGER user_before_insert 
+            //         BEFORE INSERT ON user FOR EACH ROW 
+            //         BEGIN
+            //             IF new.id IS NULL THEN
+            //                 SET new.id = uuid();
+            //             END IF;
+            //         END;//
+            //     DELIMITER ;
+            // `);
 
             await queryRunner.query(`
                 CREATE TABLE user (
