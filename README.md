@@ -58,7 +58,7 @@ Through this service's API users can be added to the waitlist (with optional ref
 ### Built With
 
 * [Express](https://www.npmjs.com/package/express)
-* [Postgres](https://www.postgresql.org/)
+* MySQL
 * [Typescript](https://www.typescriptlang.org/)
 * [TypeORM](https://www.npmjs.com/package/typeorm)
 * [GraphQL](https://graphql.org/)
@@ -70,7 +70,7 @@ Through this service's API users can be added to the waitlist (with optional ref
 <!-- GETTING STARTED -->
 ## Getting Started
 
-It's a single simple express server that uses Postgres for storing user data.
+It's a single simple express server that uses MySQL for storing user data.
 
 Ratelimiting is just done in memory, you'll want to add Redis if you have multiple servers running.
 
@@ -78,7 +78,7 @@ Ratelimiting is just done in memory, you'll want to add Redis if you have multip
 
 * npm (v6 or greater)
 * node (v12 or greater)
-* postgres (v12 or greater)
+* MySQL
 
 ### Installation
 
@@ -88,7 +88,7 @@ Ratelimiting is just done in memory, you'll want to add Redis if you have multip
    npm install
    ```
 3. Copy `.env.example` to `.env` and update values
-4. Create a postgres database (default name is `waitlist_development`)
+4. Create a MySQL database and set it into the `.env` file
 5. Run npm build (does database migrations, etc.)
    ```sh
    npm run build
