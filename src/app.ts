@@ -22,6 +22,7 @@ import ApolloContext from './types/apolloContext';
     'MYSQL_USER_NAME',
     'MYSQL_PASSWORD',
     'MYSQL_DB_NAME',
+    'MYSQL_V_OLDER_THAN_8',
     //
     'SENDGRID_API_KEY',
     'SITE_URL',
