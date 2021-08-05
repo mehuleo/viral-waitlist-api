@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node dist",
     "dev": "nodemon --watch src/ -e js,ts --exec 'dotenv tsc && dotenv npm run start'",
+    "prod": "dotenv tsc && dotenv npm run start",
     "build": "npm run typeorm migration:run && dotenv tsc",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "test": "npx tsc --project ./tsconfig.json"
