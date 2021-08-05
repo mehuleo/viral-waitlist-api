@@ -13,9 +13,12 @@ import {
 } from 'typeorm';
 import md5 from 'crypto-js/md5';
 
+@ObjectType()
 export class UserMeta {
-  referralCount?: number;
+  @Field({ nullable: true })
+  referralCount!: number;
 
+  @Field({ nullable: true })
   bonusCount?: number;
 }
 
@@ -44,6 +47,10 @@ export default class User {
 
   @Field({ defaultValue: 0 })
   @Column({ default: 0 })
+  originalPosition!: number;
+
+  @Field({ defaultValue: 0 })
+  @Column({ default: 0 })
   position!: number;
 
   get hash(): string {
@@ -51,7 +58,8 @@ export default class User {
     return md5(st).toString();
   }
 
-  @Column({ type: 'jsonb', default: {} })
+  @Field(() => UserMeta,  { nullable: true })
+  @Column({ type: 'json', nullable: true })
   meta!: UserMeta;
 
   @CreateDateColumn()

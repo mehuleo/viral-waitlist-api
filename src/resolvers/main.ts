@@ -79,7 +79,11 @@ export default class TestResolver {
       hasConfirmedEmail: false,
       referrerId,
       points: 0,
+      originalPosition: userCount + 1,
       position: userCount + 1,
+      meta: {
+          referralCount: 0
+      }
     });
     await this.userRepository.save(user);
 

@@ -15,14 +15,26 @@ import ConfirmEmailService from './services/ConfirmEmailService';
 import ApolloContext from './types/apolloContext';
 
 [
-  'DATABASE_URL',
-  'SENDGRID_API_KEY',
-  'SITE_URL',
-  'PORT',
-  'SENTRY_DSN',
+    'NODE_ENV',
+    'MYSQL_HOST',
+    'MYSQL_PORT',
+    'MYSQL_USER_NAME',
+    'MYSQL_PASSWORD',
+    'MYSQL_DB_NAME',
+    'SENDGRID_API_KEY',
+    'SITE_URL',
+    'PORT',
+    'SENTRY_DSN',
+    'REFERRAL_BUMP',
 ].map((k) => { if (!process.env[k]) throw new Error(`Missing required ENV: ${k}`); }); // eslint-disable-line array-callback-return
 
-Sentry.init({ dsn: process.env.SENTRY_DSN });
+Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+});
 
 const app = express();
 app.use(Sentry.Handlers.requestHandler());
@@ -36,8 +48,13 @@ app.get('/confirmEmail', (req, res) => container.resolve(ConfirmEmailService).ru
 
 (async () => {
   await createConnection({
-    type: 'postgres',
-    url: process.env.DATABASE_URL,
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: process.env.MYSQL_USER_NAME,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DB_NAME,
+    synchronize: true,
     entities: [path.join(__dirname, 'entities/*')],
     logging: process.env.NODE_ENV !== 'production',
     extra: process.env.NODE_ENV !== 'production' ? undefined : { ssl: { rejectUnauthorized: false } },

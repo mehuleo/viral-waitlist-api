@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node dist",
     "dev": "nodemon --watch src/ -e js,ts --exec 'dotenv tsc && dotenv npm run start'",
-    "build": "npm run typeorm migration:run && rimraf dist/ && dotenv tsc",
+    "build": "npm run typeorm migration:run && dotenv tsc",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "test": "npx tsc --project ./tsconfig.json"
   },
@@ -39,16 +39,17 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "nodemon": "^2.0.7",
-    "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@sentry/node": "^6.2.4",
+    "@sentry/node": "^6.10.0",
+    "@sentry/tracing": "^6.10.0",
     "apollo-server-express": "^2.22.2",
     "async": "^3.2.0",
     "body-parser": "^1.19.0",
     "class-validator": "^0.13.1",
+    "cross-env": "^7.0.3",
     "crypto-js": "^4.0.0",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
@@ -56,6 +57,7 @@
     "graphql": "^15.5.0",
     "helmet": "^4.4.1",
     "mailgen": "^2.0.14",
+    "mysql": "^2.18.1",
     "node-schedule": "^2.0.0",
     "nodemailer": "^6.5.0",
     "pg": "^8.5.1",
